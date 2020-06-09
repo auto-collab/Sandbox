@@ -13,6 +13,16 @@ public class Album  {
         this.songs = convertToSongs(songs);
     }
 
+    public ArrayList<Song> getSongsOnAlbum() {
+        return this.songs;
+    }
+
+    public void printSongsOnAlbum() {
+        for(Song s : getSongsOnAlbum()) {
+            System.out.println(s.getTitle());
+        }
+    }
+
     public ArrayList<Album> getAllAlbums() {
         return this.albums;
     }
@@ -32,28 +42,24 @@ public class Album  {
         return null;
     }
 
-    public ArrayList<Song> getSongsOnAlbum() {
-        return this.songs;
-    }
-
-    public void printSongsOnAlbum() {
-        for(Song s : getSongsOnAlbum()) {
-            System.out.println(s.getTitle());
-        }
-    }
 
     public String getName() {
         return this.name;
     }
 
-    public boolean createAlbum(String name, ArrayList<String> songs) {
-        Album newAlbum = new Album(name, songs);
-        try {
-            albums.add(newAlbum);
-            return true;
-        } catch(Exception e) {
-            return false;
+    public boolean addAlbumToAlbumsList(Album album) {
+        this.albums.add(album);
+        return true;
+    }
+
+    public void printAlbumList() {
+        for(Album a : getAllAlbums()) {
+            System.out.println(getName());
         }
+    }
+
+    public Album createAlbum(String name, ArrayList<String> songs) {
+        return new Album(name, songs);
     }
 
     private ArrayList<Song> convertToSongs(ArrayList<String> stringSongs) {
